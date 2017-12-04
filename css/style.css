@@ -1,0 +1,777 @@
+@font-face
+{
+	font-family: 'my';
+	src: url('fonts/calibri.ttf');
+}
+
+@font-face {
+  font-family: 'Roboto';
+  src: local('Roboto Light'), local('Roboto-Light'), url(//fonts.gstatic.com/s/roboto/v18/0eC6fl06luXEYWpBSJvXCBJtnKITppOI_IvcXXDNrsc.woff2) format('woff2');
+}
+
+html, body
+{
+	background-color: #f1f1f1;
+	padding: 0;
+	margin: 0;
+	font-family: Roboto;
+}
+
+
+/*------header bar------*/
+	.header_bar
+	{
+		position: fixed;
+		top:0;
+		left:0;
+		width:100%;
+		height: 60px;
+		background-color: white;
+		box-shadow: 0px 0px 5px grey;
+		z-index: 100;
+	}
+
+	.header_logo_bar
+	{
+		position: absolute;
+		left:0;
+		top:0;
+		height:100%;
+		//background: green;
+		margin-left: 3%;
+		padding: 5px;
+		height: 100%;
+		z-index: 100;
+		vertical-align: middle;
+	}
+
+	.menu_img
+	{
+		display: inline-block;
+		display: none;
+	}
+
+	.header_logo
+	{
+		height: 100%;
+		vertical-align: middle;
+		background: red;
+	}
+
+	.user_area
+	{
+		position: absolute;
+		right:0;
+		top:0;
+		height:100%;
+		margin-right: 5px;
+		padding: 10px;
+		cursor: pointer;
+		//background: magenta;
+		vertical-align: middle;
+	}
+
+	.logged_user_name
+	{
+		font-size: 110%;
+		text-transform: uppercase;
+		display: none;
+	}
+
+	.user_area img
+	{
+		max-height: 100%;
+	}
+
+	.search_icon
+	{	
+		//background: yellow;
+		vertical-align: middle;
+		position: absolute;
+		top: 0px;
+		right: 60px;
+		text-align: center;
+		margin: auto;
+		width: 60px;
+		height: 100%;
+		padding: 13px;
+	}
+
+	.search_icon img
+	{
+		max-height: 100%;
+		cursor: pointer;
+	}
+
+	.search_bar_div
+	{
+		position: fixed;
+		top: 65px;
+		right: -310px;
+		background: silver;
+		width: 300px;
+		height: 50px;
+		z-index: 80;
+		text-align: center;
+		vertical-align: middle;
+		padding: 5px;
+		border-radius: 3px;
+	}
+
+	.search_input
+	{
+		width: 70%;
+		vertical-align: middle;
+		height: 40px;
+		border-radius: 3px;
+		border: none;
+	}
+
+	.search_button
+	{
+		vertical-align: middle;
+		height: 30px;
+		width: 20%;
+		background: grey;
+		border: none;
+		color: white;
+		border-radius: 4px;
+		//box-shadow: 0px 0px 2px black;
+		font-size: 95%;
+		inlin
+	}
+
+	.search_value
+	{
+		display: none;
+	}
+
+	.search_result_div
+	{
+		background: white;
+		width: 100%;
+		margin-top: 65px;
+		padding:10px;
+		text-align: center;
+		height: auto;
+	}
+
+	.search_result_div2
+	{
+		background: white;
+		width: 100%;
+		padding:10px;
+		text-align: center;
+		font-size: 120%;
+		color:red;
+	}
+	
+/*-pc menu--*/
+	.pc_menu
+	{
+		display: inline-block;
+		vertical-align: middle;
+		z-index: 120;
+	}
+
+	.pc_menu ul
+	{
+		vertical-align: middle;
+		list-style: none;
+		padding:0;
+		margin: 0;
+		//background: yellow;
+		font-size: 120%;
+	}
+
+	.pc_menu li
+	{
+		vertical-align: middle;
+		display: inline-block;
+		//background: orange;
+		margin-left: 15px;
+	}
+
+	.pc_menu li a
+	{
+		text-decoration: none;
+		cursor: pointer;
+		color: #676767;
+	}
+
+	.catog_menu
+	{
+		position: absolute;
+		top: 60px;
+		left: 170px;
+		background: white;
+		padding: 5%;
+		box-shadow: 0px 0px 2px grey;
+		display: none;
+		z-index: 50;
+		border-radius: 4px;
+	}
+
+	.catog_menu_a
+	{
+		padding: 0;
+		margin: 0;
+		text-decoration: none;
+		cursor: pointer;
+		color: grey;
+		transition: .2s;
+	}
+
+	.catog_menu_anim
+	{
+		display: block;
+	}
+
+	.catog_menu_a:hover
+	{
+		color: black;
+		text-decoration: none;
+	}
+
+/*------loader div----*/
+	.loader_bckgrnd
+	{
+		width:100%;
+		height:100%;
+		background: black;
+		z-index:110;
+		position: fixed;
+		top:0;
+		left:0;
+		opacity: .5;
+
+		display: none;
+	}
+
+	.div_loader	
+	{
+		position: fixed;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		z-index: 1500;
+		width: 50%;
+		height: 70%;
+		margin: auto;
+		background: white;
+		border-radius: 10px;
+		
+		display: none;
+	}
+
+	.close_loader
+	{
+		float:right;
+		margin: 2px;
+		background: black;
+		color: white;
+		border: none;
+		border-radius: 2px;
+	}
+
+/*------user area----------*/
+	.log_reg_button
+	{
+		width: 100%;
+		height: auto;
+		background: #333333;
+		text-align: center;
+		padding: 5px;
+	}
+
+	.login_button, .register_button
+	{
+		width: 200px;
+		height: 40px;
+		margin:5px;
+		border: none;
+		border-radius: 3px;
+		//box-shadow: 0px 0px 2px grey;
+		font-size: 110%;
+		background: none;
+		color: white;
+		border: 1px lightgrey solid;
+	}
+
+	.already_logged
+	{
+		text-align: center;
+		margin:auto;
+		background: #ff751a;
+		color: white;
+		border-radius: 5px;
+		padding: 5px;
+		width: 50%;
+	}
+
+	.login_div
+	{
+		text-align: center;
+		//background: red;
+		padding: 20px;
+	}
+
+	.login_div input
+	{
+		width: 300px;
+		height: 30px;
+		background: none;
+		border: none;
+		border-radius: 5px;
+		padding: 3px;
+		border: lightgrey 1px solid;
+	}
+
+	.login_submit, .register_submit
+	{
+		background: grey;
+		color: white;
+		height: 35px;
+		border: none;
+		border-radius: 5px;
+		padding: 5px;
+		width: 90px;
+	}
+
+	.register_div
+	{
+		text-align: center;
+		padding: 20px;
+
+		display: none;
+	}
+
+	.register_div input
+	{
+		width: 300px;
+		height: 30px;
+		background: none;
+		border: none;
+		border-radius: 5px;
+		//box-shadow: 0px 0px 1px grey;
+		padding: 3px;
+		border: lightgrey 1px solid;
+	}
+
+	#random_no, #random_no_login
+	{
+		font-size: 140%;
+		color: red;
+		height: 40px;
+		margin: 10px;
+		vertical-align: middle;
+	}
+
+	#random_no_input, #random_no_login_input
+	{
+		vertical-align: middle;
+		width: 200px;
+		height: 40px;
+		background: none;
+		border: none;
+		border-radius: 5px;
+		//box-shadow: 0px 0px 1px grey;
+		padding: 3px;
+		border: lightgrey 1px solid;
+	}
+
+	#reg_feed
+	{
+		text-align: center;
+		margin:auto;
+		background: #ff751a;
+		color: white;
+		border-radius: 5px;
+		//padding: 5px;
+		width: 50%;
+	}
+
+	#reg_feed img
+	{
+		width: 80%;
+	}
+
+	.logout_button
+	{
+		background: grey;
+		color: white;
+		height: 35px;
+		border: none;
+		border-radius: 5px;
+		padding: 5px;
+		width: 90px;
+	}
+
+/*-----image slider----*/
+	.image_slider
+	{
+		position: relative;;
+		top: 60px;
+		left:0;
+		z-index: 50;
+		background-color: #f1f1f1;
+	}
+
+	.slider
+	{
+		text-align: center;
+		background: green;
+		background-color: #f1f1f1;
+	}
+
+	.slider img
+	{
+		width: 100%;
+		background-color: #f1f1f1;
+	}
+
+/*-------index page---------*/
+.viewed_deal_div
+{
+	width: 100%;
+	padding: 10px;
+	background: white;
+	text-align: center;
+	//background-color: #f1f1f1;
+}
+
+.viewed_deal_div .content_div
+{
+	margin: 5px;
+	transform: scale(.9,.9);
+	box-shadow: 0px 0px 1px grey;
+}
+
+.viewed_deal_div h3
+{
+	text-align: left;
+}
+
+
+/*-----------content-page------*/
+	.content_page
+	{
+		text-align: center;
+		background-color: #f1f1f1;
+	}
+
+	.content_div
+	{
+		width: 230px;
+		height: auto;
+		margin: 15px;
+		padding: 10px;
+		display: inline-block;
+		vertical-align: top;
+		box-shadow: 0px 0px 3px grey;
+		text-align: center;
+		background: white;
+	}
+
+	.content_info
+	{
+		height: 180px;
+	}
+
+	.content_image
+	{
+		width: 90%;
+		margin:auto;
+	}
+
+	.content_image img
+	{
+		width: 60%;
+		
+	}
+
+	.content_data
+	{
+		//background: green;
+		text-align: left;
+	}
+
+	#content_provider
+	{
+		color: grey;
+		font-size: 90%;
+	}
+
+	#content_name
+	{
+		color: black;
+		font-size: 110%;
+	}
+
+	.content_price_div
+	{
+		margin-top: 10%;
+		text-align: left;
+	}
+
+	#content_price
+	{
+		color: red;
+		font-size: 120%;
+		text-align: 
+	}
+
+	#content_org_price
+	{
+		text-decoration: line-through;
+		color: silver;
+	}
+
+	#content_deal
+	{
+		margin:0;
+		padding: 0;
+		float: right;
+		//text-align: right;
+		background: orange;
+		padding:5px;
+		border-radius: 3px;
+		color: white;
+		text-decoration: none;
+		border: none;
+		box-shadow: none;
+	}
+
+	#content_deal_id
+	{
+		display: none;
+	}
+
+/*------description viewer page--------*/
+	.desc_viewer_div
+	{
+		width: 90%;
+		background: white;
+		margin: auto;
+		margin-top: 50px;
+		padding: 2%;
+		text-align: center;
+	}
+
+	.desc_name
+	{
+		font-size: 130%;
+		text-align: left;
+		margin: 3px;
+	}
+
+	.desc_info
+	{
+		//background: yellow;
+		text-align: center;
+		color: grey;
+	}
+
+	.desc_provider
+	{
+		text-align: left;
+	}
+
+	.desc_image
+	{
+		width: 60%;
+	}
+
+	.desc_price
+	{
+		text-align: left;
+		font-size: 200%;
+		//font-weight: bold;
+		color: black;
+	}
+
+	.desc_org_price
+	{
+		text-decoration: line-through;
+		color: red;
+		text-align: left;
+		
+	}
+
+	.desc_off
+	{
+		color: green;
+		font-weight: bold;
+		text-align: left;
+		font-size: 120%;
+	}
+
+	.desc_deal a
+	{
+		color: white;
+		text-decoration: none;
+		padding: 15px;
+		background: orange;
+		color: white;
+		font-size: 110%;
+	}
+
+	.desc_deal a:hover
+	{
+		color: white;
+		text-decoration: none;
+		
+	}
+
+	.desc_desc
+	{
+		margin-top: 50px;
+		//background: red;
+	}
+
+	.sugg_from_provider_div
+	{
+		//width: 90%;
+		background: white;
+		padding: 1%;
+		text-align: center;
+	}
+
+	.sugg_from_provider_div h3
+	{
+		text-align: left;
+	}
+
+
+
+
+/*--------media queries----------*/
+
+	@media screen and (max-width: 800px)
+	{
+	/*-----header-bar---*/
+		.header_bar
+		{
+			height: 50px;
+		}
+
+		.header_logo_bar
+		{
+			margin-left: 0%;
+		}
+
+		.menu_img
+		{
+			display: inline-block;
+			height: 100%;
+			padding: 8px;
+			cursor: pointer;
+		}
+
+		.pc_menu
+		{
+			position: fixed;
+			display: block;
+			top: 50px;
+			left:-150px;
+			height:100%;
+			background: white;
+			padding-left: 5%;
+			padding-right: 5%;
+			//font-size: 80%;
+			overflow: scroll;
+		}
+
+		.pc_menu li
+		{
+			vertical-align: middle;
+			display: block;
+			//background: orange;
+			margin:0;
+			margin-top: 5%;
+			font-size: 80%;
+		}
+
+		.catog_menu
+		{
+			position: relative;
+			top: 0;
+			left: 0px;
+			background: white;
+			padding-left: 20%;
+			box-shadow: 0px 0px 0px grey;
+			//border: 1px solid grey;
+			display: block;
+			font-size: 90%;
+		}
+
+		.search_icon
+		{	
+			right: 50px;
+			width: 40px;
+		}
+
+
+	/*-----content  div---*/
+		.content_page
+		{
+			text-align: center;
+		}
+
+		.content_div
+		{
+			width: 190px;
+			margin: 10px;
+		}
+
+		.content_info
+		{
+			height: 150px;
+			font-size: 90%;
+			//background: red;
+		}
+
+		.content_price_div
+		{
+			//border-top: 1px solid silver;
+			//background: blue;
+			margin-top: 10%;
+			text-align: left;
+			font-size: 85%;
+		}
+
+	/*-------div loader---*/
+		.login_submit, .register_submit
+		{
+			padding: 0;
+			margin: 0;
+		}
+
+		.div_loader	
+		{
+			width: 95%;
+			height: 85%;
+			padding: 0;
+		}
+
+		.register_div input, .login_div input
+		{
+			width: 250px;
+			height: 30px;
+			padding: 3px;
+			border: lightgrey 1px solid;
+		}
+
+
+		#random_no_input, #random_no_login_input
+		{
+			width: 150px;
+		}
+
+		.logged_user_name
+		{
+			font-size: 90%;
+		}
+
+	}
