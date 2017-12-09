@@ -21,6 +21,14 @@
 	<br><br>
 	<span id="login_feed"></span>
 	<br>
+
+	<div class="fb-login-button" data-scope = "public_profile,email" onlogin="checkLoginState();">
+		Login From Facebook
+	</div>
+	<br><br>
+	<!-- 
+	<button class="google_login_button" >Login With Google</button>
+ -->
 </div>
 
 <script type="text/javascript">
@@ -111,5 +119,20 @@
 
 		});
 
+	/*------on clicking login google button -----*/
+	
+		// function onSignIn(googleUser)
+		// {
+		// 	profile = googleUser.getBasicProfile();
+		// 	email_reg_google = profile.getEmail();
+		// 	name_reg_google = profile.getName();
+		// 	//alert(name_reg_google);
+			
+		// 	$.post('php/reg_google.php', {email_reg_google: email_reg_google, name_reg_google: name_reg_google}, function(e)
+		// 	{
+		// 		//alert(e);
+		// 		//location.reload();
+		// 	});
+		// }
 
 </script>

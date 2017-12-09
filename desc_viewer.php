@@ -9,8 +9,6 @@
 ?>
 <html>
 <head>
-	<title>Descritption</title>
-	
 	<style type="text/css">
 		body,html
 		{
@@ -23,10 +21,20 @@
 	
 </head>
 <body>
+
 	<?php
+		$content_deal_id = $_POST['content_deal_id'];
+		
+		if(isset($content_deal_id))
+		{
+
+		}
+		else
+		{
+			die('You are trying to refresh the page. Radius session not allowed.');
+		}
 
 	//for loading content of that particular deal
-		$content_deal_id = $_POST['content_deal_id'];
 		$desc_viewer_query="SELECT * FROM content_deal WHERE id = '$content_deal_id'";
 		$desc_viewer_query_run = @mysqli_query($connect_link, $desc_viewer_query);
 
@@ -42,6 +50,49 @@
 			$desc_content_off = $desc_viewer_query_data['off'];
 			$desc_content_price = $desc_viewer_query_data['price'];
 			$desc_content_deal = $desc_viewer_query_data['deal'];
+
+			$desc_content_time = $desc_viewer_query_data['time'];
+			$desc_content_click = $desc_viewer_query_data['click'];
+
+		//for getting time passed since post
+			$content_timestamps = strtotime($desc_content_time);
+			$current_time = time();
+			$time_spent = $current_time - $content_timestamps;
+
+			$time_in_mins = round($time_spent/60) . " mins";
+
+			$time_in_hrs= "";
+			$time_in_days= "";
+			$time_in_mnths = "";
+
+			if($time_in_mins>=60)
+			{
+				$time_in_hrs = round($time_in_mins/60) . " hrs ";
+				$time_in_mins = $time_in_mins % 60 . " mins ";
+
+				if($time_in_hrs >= 24)
+				{
+					$time_in_days = round($time_in_hrs/24) . " days ";
+					$time_in_hrs =  $time_in_hrs % 24 . " hrs ";
+					$time_in_mins = $time_in_mins % 60 . " mins ";
+
+					if($time_in_days>=30)
+					{
+						$time_in_mnths =  round($time_in_days/30) . " months ";
+						$time_in_days = $time_in_days % 30 . " days ";
+						$time_in_hrs =  $time_in_hrs % 24 . " hrs ";
+						$time_in_mins = $time_in_mins % 60 . " mins ";
+
+					}
+				}
+			}
+		//for getting time passed since post
+
+
+		//increasing no of clicks of the selcted deal whose desciption is currently opened
+			$desc_content_click_new = $desc_content_click + 1;
+			$deal_click_query = "UPDATE content_deal SET click = '$desc_content_click_new' WHERE id = '$content_deal_id'";
+			$deal_click_query_run = mysqli_query($connect_link, $deal_click_query);
 		}
 
 	//if user has logged in then storing its viewed item in his account database
@@ -50,15 +101,14 @@
 		else
 		{
 			$logged_user_id = $_COOKIE['logged_user_cookie'];
-			$content_deal_id = $_POST['content_deal_id'];
+			$content_deal_id = @$_POST['content_deal_id'];
 			
 		//getting_prev_viewed_id_of_user
 			$getting_prev_viewed_id_of_user_query = "SELECT * FROM users WHERE id = '$logged_user_id'";
 
-			if($getting_prev_viewed_id_of_user_query_run = mysqli_query($connect_link, $getting_prev_viewed_id_of_user_query))
+			if($getting_prev_viewed_id_of_user_query_run = @mysqli_query($connect_link, $getting_prev_viewed_id_of_user_query))
 			{
-				echo "lets store ur viewed data " . $logged_user_id . "<br>";
-				$getting_prev_viewed_id_of_user_result = mysqli_fetch_assoc($getting_prev_viewed_id_of_user_query_run);
+				$getting_prev_viewed_id_of_user_result = @mysqli_fetch_assoc($getting_prev_viewed_id_of_user_query_run);
 				
 			//old viewed ids
 				$view_1_prev = $getting_prev_viewed_id_of_user_result['view1'];
@@ -89,44 +139,52 @@
 	<div class="desc_viewer_div">
 		<div class="desc_name">
 			<?php
-				 echo $desc_content_name;
+				 echo @$desc_content_name;
 			?>
 		</div>
 		<div class="row">
 
 			<div class="col-xs-12 col-md-6 desc_info">
-				<img class="desc_image" src="img/content/<?php
-				 echo $desc_content_image;
+				<img alt="" class="desc_image" src="img/deal/<?php
+				 echo @$desc_content_image;
 				?>"/>
 				<br>
 
 				<div class="desc_provider">
 					<?php
-						echo $desc_content_provider;
+						echo @$desc_content_provider;
 					?>
 				</div>
-				
+				<span id="time_spent">
+					<?php
+						echo $time_in_mnths . $time_in_days . $time_in_hrs . $time_in_mins; 
+					?>
+					 ago
+				</span>
 				<div class="desc_price">
 					&#8377 <?php
-						echo $desc_content_price;
+						echo @$desc_content_price;
 					?>
 				</div>
 
 				<div class="desc_org_price">
 					&#8377 <?php
-						echo $desc_content_org_price;
+						echo @$desc_content_org_price;
 					?>					
 				</div>
 
 				<div class="desc_off">
 					 <?php
-						echo $desc_content_off;
+						echo @$desc_content_off;
 					?>% OFF
 				</div>
 
+				
+				<br>
+
 				<div class="desc_deal">
 					<a target="_blank" href="http://<?php
-						echo $desc_content_deal;
+						echo @$desc_content_deal;
 					?>">Buy Now</a>
 				</div>
 
@@ -134,7 +192,7 @@
 
 			<div class="col-xs-12 col-md-6 desc_desc">
 				<?php
-				 echo $desc_content_desc;
+				 echo @$desc_content_desc;
 				?>
 			</div>
 		</div>
@@ -143,17 +201,25 @@
 
 <!--------suggestion of the deal of the same provider------>
 	<div class="sugg_from_provider_div">
-		<h3>
+		<h4 class="content_deal_h4">
 			More from 
 			<?php 
-				echo $desc_content_provider;
+				echo @$desc_content_provider;
 			?>
-		</h3>
+		</h4>
 
 		<div class="sugg_from_provider">
 		</div>
 	</div>
 
+
+
+<!----footer------>
+	<?php
+		include('php/footer.php');
+	?>
+
+	
 <!------script for geeting suggestion of the same provider---->
 	<script type="text/javascript">
 
@@ -169,4 +235,13 @@
 	</script>
 
 </body>
+
+<head>
+	<title>	<?php
+				 echo @$desc_content_name;
+			?> | Catchfreedeal
+	</title>
+	
+</head>
+
 </html>

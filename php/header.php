@@ -1,5 +1,8 @@
 <?php
-	//header of the site pages // A MNgo Creation by: Aditya Suman (http://www.mngo.in/aditya.php)
+//header of the site pages
+// A MNgo Creation by: Aditya Suman (http://www.mngo.in/aditya.php)
+//including the file to connect to the database
+	include('php/connect_db.php');
 ?>
 
 <head>
@@ -7,59 +10,29 @@
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 	
 	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="fbapp/fb.js"></script>
+
 </head>
 
 <!----------header-----bar-------->
 <div class="header_bar">
 	<div class="header_logo_bar">
 		<img class="menu_img" src="img/menu_mob.png"/>
-
-		<img class="header_logo" src="img/logo.jpg">
-
-		<div class="pc_menu">
-			<ul>
-				<li><a href="index.php">HOME</a></li>
-				<li><a class="catog_hover">CATEGORIES</a></li>
-					<div class="catog_menu">
-						<?php
-							//getting no of options in sub_menu
-							//$sub_menu_count_query = "SELECT count(id) FROM catog_menu";
-							//$sub_menu_count_query_run = mysql_query($sub_menu_count_query)
-							// $submenu_count_array= mysql_fetch_array($sub_menu_count_query_run);
-							// echo $submenu_count=  $submenu_count_array[0];
-
-							$sub_menu_query= "SELECT sub_menu FROM catog_menu";
-
-							if($sub_menu_assoc_run = mysqli_query($connect_link , $sub_menu_query))
-							{
-								//getting sub menu
-								while($submenu_array = mysqli_fetch_assoc($sub_menu_assoc_run))
-								{
-									$sub_menu_result = $submenu_array['sub_menu'];
-									echo "<a class=\"catog_menu_a\">$sub_menu_result</a><br>";
-								}
-
-							}
-							else
-							{
-								echo 'failed to get category menu';
-							}
-						?>
-					</div>
-				<li><a>COUPONS</a></li>
-				<li><a>DEALS</a></li>
-			</ul>
-		</div>
+		<a href="index.php"><img class="header_logo_img" src="img/logo.jpg"></a>
 	</div>
 
-<!----search bar-->
-	<div class="search_icon">
-		<img src="img/search.png">
 
-	</div>
 
 <!----user login and register area-->
 	<div class="user_area">
+	<!-----search--bar---->
+		<div class="search_bar_div">
+			<form action = "search.php" method="get">
+				<input class="search_input" name="search_input" type="text">
+				<input type="submit" value="search" class="search_button"/>
+			</form>
+		</div>
+
 		<span class="logged_user_name">
 			<?php
 				if(isset($_COOKIE['logged_user_cookie']))
@@ -69,17 +42,50 @@
 			?>
 		</span>
 
-		<img src="img/user_icon.png"/>
+		<img class="user_area_img" src="img/user_icon.png"/>
+	</div>
+
+</div>
+
+<!----serach bar for mobile---->
+	<div class="search_bar_div_mob">
+		<form action = "search.php" method="get">
+			<input class="search_input_mob" name="search_input" type="text">
+			<input type="submit" value="search" class="search_button_mob"/>
+		</form>
+	</div>
+
+
+<!--------header bar 2 (mini)---->
+<div class="header_mini_bar">
+	<div class="pc_menu">
+		<ul>
+			<li><a href="deal.php">Deals</a></li>
+			<form action="deal.php" method="get" class="catog_menu">
+				<?php
+					$sub_menu_query= "SELECT sub_menu FROM catog_menu";
+
+					if($sub_menu_assoc_run = mysqli_query($connect_link , $sub_menu_query))
+					{
+						//getting sub menu
+						while($submenu_array = mysqli_fetch_assoc($sub_menu_assoc_run))
+						{
+							$sub_menu_result = $submenu_array['sub_menu'];
+							echo "<input type=\"submit\"  value= \"" .$sub_menu_result."\" name=\"deal_catog\" class=\"catog_menu_a\"><br>";
+						}
+					}
+				?>
+			</form>
+			<li><a href="coupon.php">Coupons</a></li>
+			<li><a>Travel Deal</a></li>
+			<li><a>Local Service</a></li>
+			
+		</ul>
 	</div>
 </div>
 
-<!-----search--bar---->
-	<div class="search_bar_div">
-		<form action = "search.php" method="get">
-			<input class="search_input" name="search_input" type="text">
-			<input type="submit" value="search" class="search_button"/>
-		</form>
-	</div>
+
+
 
 <!---------loader div-------->
 <div class="loader_bckgrnd">
@@ -100,19 +106,27 @@
 			if(!isset($_COOKIE['logged_user_cookie']))
 			{
 				include('php/login_form.php');
-				
 			}
 			else
 			{
-				echo "<div class=\"already_logged\">Welcome " . $_COOKIE['logged_user_cookie']. "!</div>";
-				//header("Location: index.php");
+				$logged_user_id =  $_COOKIE['logged_user_cookie'];
+				$logged_user_name_query = "SELECT name FROM users WHERE id = '$logged_user_id'";
+
+				$logged_user_name_query_run = mysqli_query($connect_link, $logged_user_name_query);
+				$logged_user_name_assoc = mysqli_fetch_assoc($logged_user_name_query_run);
+				$logged_user_name = $logged_user_name_assoc['name'];
+
+				echo "<div class=\"already_logged\">
+						Welcome " .$logged_user_name. "!
+						</div>";
+
 				include('php/logout_form.php');
 			}
 		?>
 
 	</div>
 
-	<!--------register-div-------->
+	<!--------register div-------->
 		<div class="register_div">
 			<input type="text" id="name_reg" placeholder="username" maxlength="15">
 			<br>
@@ -147,25 +161,25 @@
 
 
 
-<!------scripts-->
+<!------scripts---->
 <script type="text/javascript">
 
 /*------search icon-------*/
-	$('.search_icon img').click(function()
-	{
-		//alert('0');
+	// $('.search_icon img').click(function()
+	// {
+	// 	//alert('0');
 
-		if($('.search_bar_div').hasClass('appear'))
-		{
-			$('.search_bar_div').animate({"right":"-310px"}, 600).removeClass('appear');
-		}
-		else
-		{
-			$('.search_bar_div').animate({"right":"5px"}, 600).addClass('appear');
-		}
+	// 	if($('.search_bar_div').hasClass('appear'))
+	// 	{
+	// 		$('.search_bar_div').animate({"right":"-310px"}, 600).removeClass('appear');
+	// 	}
+	// 	else
+	// 	{
+	// 		$('.search_bar_div').animate({"right":"5px"}, 600).addClass('appear');
+	// 	}
 
 
-	});
+	// });
 
 /*-----category name changer-------*/
 	win_width = $(window).width();
@@ -177,54 +191,21 @@
 /*-----mob menu toogle-------*/
 	$('.menu_img').click(function()
 	{
-		//alert(win_width);
-
 		var pc_menu = $('.pc_menu');
 
 		if(pc_menu.hasClass('appear'))
 		{
-			$('.pc_menu').animate({"left":"-150px"}, 600).removeClass('appear');
+			$('.pc_menu').animate({"left":"-225px"}, 900).removeClass('appear');
 		}
 		else
 		{
-			$('.pc_menu').animate({"left":"00px"}, 600).addClass('appear');
+			$('.pc_menu').animate({"left":"00px"}, 900).addClass('appear');
 		}
 
 	});
 
-/*------catog_hover------*/
-	$('.catog_hover').mouseenter(function()
-	{
-		//alert('kauaa');
-		$('.catog_menu').addClass('catog_menu_anim');
-	});
-
-	$(window).mousemove(function()
-	{
-		$('.catog_menu').mousemove(function()
-		{
-			$('.catog_menu').addClass('catog_menu_anim');	
-		}).mouseleave(function()
-		{
-			$('.catog_menu').removeClass('catog_menu_anim');	
-		})
-
-		$(".header_bar").mouseleave(function()
-		{
-			//alert('kauaa');
-			$('.catog_menu').removeClass('catog_menu_anim');
-		});
-	});
-
-/*------catog toogle------*/
-	$('.catog_hover').click(function()
-	{
-		//alert('ka');
-		$('.catog_menu').addClass('catog_menu_anim');
-	});
-
 /*----user area entry and exit--------*/
-	$('.user_area').click(function()
+	$('.user_area_img').click(function()
 	{
 		$('.loader_bckgrnd').fadeIn(400);
 		$('.div_loader').fadeIn(400);

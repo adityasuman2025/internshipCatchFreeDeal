@@ -3,6 +3,16 @@
 
 	include('connect_db.php');
 
+	//if directyly visiting the page
+		if(isset($_POST['email']))
+		{
+
+		}
+		else
+		{
+			die('not allowed');
+		}
+
 	$email = htmlentities(mysql_real_escape_string(strtolower($_POST['email'])));
 
 	$email_varification_query = "SELECT id FROM users WHERE email = '$email'";

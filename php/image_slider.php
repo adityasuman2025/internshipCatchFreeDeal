@@ -2,29 +2,27 @@
 	//image silder on the homepage
 ?>
 <!--------school image slider---------->
-	<div class="image_slider">
-		<ul class="slider">
-			<?php
-				include('php/connect_db.php');
-				$slider_query = "SELECT image FROM image_slider ORDER BY id";
+	<ul class="slider">
+		<?php
+			include('php/connect_db.php');
+			$slider_query = "SELECT image FROM image_slider ORDER BY id";
 
-				if($slider_query_run = mysqli_query($connect_link , $slider_query))
+			if($slider_query_run = mysqli_query($connect_link , $slider_query))
+			{
+				while($slider_query_assoc = mysqli_fetch_assoc($slider_query_run))
 				{
-					while($slider_query_assoc = mysqli_fetch_assoc($slider_query_run))
-					{
-						$slider_query_result = $slider_query_assoc['image'];
-						echo "<li><img src=\"img/image_slider/$slider_query_result\"/></li>";
-					}
-					//echo 'ok';
+					$slider_query_result = $slider_query_assoc['image'];
+					echo "<li><img src=\"img/image_slider/$slider_query_result\"/></li>";
 				}
-				else
-				{
-					//echo 'not';
-				}
+				//echo 'ok';
+			}
+			else
+			{
+				//echo 'not';
+			}
 
-			?>
-		</ul>
-	</div>
+		?>
+	</ul>
 
 
 	<script type="text/javascript" src="js/jquery.bxslider.js"></script>

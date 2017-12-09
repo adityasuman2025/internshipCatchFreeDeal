@@ -1,6 +1,16 @@
 <?php
 	//varfying if the typed content is an email or not
 	
+//if directyly visiting the page
+	if(isset($_POST['email']))
+	{
+
+	}
+	else
+	{
+		die('not allowed');
+	}
+	
 	$email = htmlentities($_POST['email']);
 	$email = strtolower($email);
 	

@@ -8,7 +8,7 @@
 ?>
 <html>
 <head>
-	<title>Search</title>
+	<title>Search | Catchfreedeal</title>
 	
 	<style type="text/css">
 		body,html
@@ -29,15 +29,17 @@
 			echo $search_value;
 		?>
 	</div>
-
-	<div class="search_result_div">
-		
-	</div>
 	<br>
 
-	<div class="search_result_div2">
-		
-	</div>
+	<div class="search_result_div"></div>
+	
+	<div class="search_result_div2"></div>
+	<br>
+	
+<!----footer------>
+	<?php
+		include('php/footer.php');
+	?>
 
 <!--scripts-------->
 <script type="text/javascript">
@@ -46,9 +48,9 @@
 
 	search_value_length = search_value.length;
 	
-	if(search_value_length > 3)
+	if(search_value_length >= 3)
 	{
-	/*----searching by name------*/
+	/*----searching deal by name------*/
 		query_to_send = "SELECT * FROM content_deal WHERE name LIKE '%" + search_value + "%'";
 
 		$.post('php/deal_viewer.php', {query_to_send : query_to_send}, function(e)
@@ -58,7 +60,7 @@
 
 		});
 
-	/*----searching by provider------*/
+	/*----searching deal by provider------*/
 		query_to_send = "SELECT * FROM content_deal WHERE provider LIKE '%" + search_value + "%'";
 
 		$.post('php/deal_viewer.php', {query_to_send : query_to_send}, function(e)
@@ -68,7 +70,7 @@
 
 		});
 
-	/*----searching by tags------*/
+	/*----searching deal by tags------*/
 		query_to_send = "SELECT * FROM content_deal WHERE tag LIKE '%" + search_value + "%'";
 
 		$.post('php/deal_viewer.php', {query_to_send : query_to_send}, function(e)
@@ -78,15 +80,26 @@
 
 		});
 
+	/*----searching coupon by provider------*/
+		query_to_send = "SELECT * FROM content_coupon WHERE provider LIKE '%" + search_value + "%'";
+
+		$.post('php/coupon_viewer.php', {query_to_send : query_to_send}, function(e)
+		{
+			//alert(e);
+			$('.search_result_div').append(e);
+
+		});
+
 	}
 	
 
+	//location of no results found div
 		search_result_div_height =	$('.search_result_div').height();
 		//alert(search_result_div_height);
 
 		if(search_result_div_height < 100)
 		{
-			$('.search_result_div2').text('sorry no more result found');
+			$('.search_result_div2').text('sorry no more results found');
 		}
 		else
 		{

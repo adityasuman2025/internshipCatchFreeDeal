@@ -25,9 +25,8 @@ html, body
 		top:0;
 		left:0;
 		width:100%;
-		height: 60px;
+		height: 50px;
 		background-color: white;
-		box-shadow: 0px 0px 5px grey;
 		z-index: 100;
 	}
 
@@ -51,11 +50,10 @@ html, body
 		display: none;
 	}
 
-	.header_logo
+	.header_logo_img
 	{
 		height: 100%;
-		vertical-align: middle;
-		background: red;
+		vertical-align: middle;/
 	}
 
 	.user_area
@@ -65,80 +63,65 @@ html, body
 		top:0;
 		height:100%;
 		margin-right: 5px;
-		padding: 10px;
+		padding: 4px;
+		//background: blue;
+		width: auto;
+	}
+
+	.user_area_img
+	{
+		height: 95%;
+		padding: 2px;
 		cursor: pointer;
-		//background: magenta;
-		vertical-align: middle;
 	}
 
 	.logged_user_name
 	{
-		font-size: 110%;
+		font-size: 100%;
 		text-transform: uppercase;
 		display: none;
-	}
-
-	.user_area img
-	{
-		max-height: 100%;
-	}
-
-	.search_icon
-	{	
-		//background: yellow;
 		vertical-align: middle;
-		position: absolute;
-		top: 0px;
-		right: 60px;
-		text-align: center;
-		margin: auto;
-		width: 60px;
-		height: 100%;
-		padding: 13px;
 	}
 
-	.search_icon img
-	{
-		max-height: 100%;
-		cursor: pointer;
-	}
+	
 
+/*---search bar and search page ------*/
 	.search_bar_div
 	{
-		position: fixed;
-		top: 65px;
-		right: -310px;
-		background: silver;
-		width: 300px;
-		height: 50px;
-		z-index: 80;
-		text-align: center;
+		display: inline-block;
+		height: 90%;
 		vertical-align: middle;
-		padding: 5px;
-		border-radius: 3px;
+		margin-right: 10px;
+	}
+
+	.search_bar_div_mob
+	{
+		display: none;
 	}
 
 	.search_input
 	{
-		width: 70%;
+		width: 350px;
 		vertical-align: middle;
-		height: 40px;
-		border-radius: 3px;
+		height: 100%;
+		border-radius: 5px;
 		border: none;
+		border: 2px solid grey;
+		padding: 0;
+		margin:0;
 	}
 
 	.search_button
 	{
 		vertical-align: middle;
-		height: 30px;
-		width: 20%;
+		height: 90%;
+		width: 80px;
 		background: grey;
 		border: none;
 		color: white;
 		border-radius: 4px;
-		//box-shadow: 0px 0px 2px black;
-		font-size: 95%;
-		inlin
+		padding: 0;
+		margin:0;
 	}
 
 	.search_value
@@ -148,7 +131,6 @@ html, body
 
 	.search_result_div
 	{
-		background: white;
 		width: 100%;
 		margin-top: 65px;
 		padding:10px;
@@ -166,29 +148,35 @@ html, body
 		color:red;
 	}
 	
-/*-pc menu--*/
+/*----header bar mini and pc menu--*/
+	.header_mini_bar
+	{
+		position: fixed;
+		top:50px;
+		left:0;
+		width:100%;
+		padding: 3px;
+		background-color: #F62459;
+		z-index: 100;
+	}
+
 	.pc_menu
 	{
 		display: inline-block;
-		vertical-align: middle;
-		z-index: 120;
 	}
 
 	.pc_menu ul
 	{
-		vertical-align: middle;
 		list-style: none;
 		padding:0;
 		margin: 0;
-		//background: yellow;
-		font-size: 120%;
 	}
 
 	.pc_menu li
 	{
 		vertical-align: middle;
 		display: inline-block;
-		//background: orange;
+		color: white;
 		margin-left: 15px;
 	}
 
@@ -196,41 +184,13 @@ html, body
 	{
 		text-decoration: none;
 		cursor: pointer;
-		color: #676767;
+		font-size: 110%;
+		color: white;
 	}
 
 	.catog_menu
 	{
-		position: absolute;
-		top: 60px;
-		left: 170px;
-		background: white;
-		padding: 5%;
-		box-shadow: 0px 0px 2px grey;
 		display: none;
-		z-index: 50;
-		border-radius: 4px;
-	}
-
-	.catog_menu_a
-	{
-		padding: 0;
-		margin: 0;
-		text-decoration: none;
-		cursor: pointer;
-		color: grey;
-		transition: .2s;
-	}
-
-	.catog_menu_anim
-	{
-		display: block;
-	}
-
-	.catog_menu_a:hover
-	{
-		color: black;
-		text-decoration: none;
 	}
 
 /*------loader div----*/
@@ -275,7 +235,7 @@ html, body
 		border-radius: 2px;
 	}
 
-/*------user area----------*/
+/*------user area controls----------*/
 	.log_reg_button
 	{
 		width: 100%;
@@ -408,20 +368,35 @@ html, body
 		width: 90px;
 	}
 
-/*-----image slider----*/
+	.google_login_button
+	{
+		text-align: center;
+		background: yellow;
+		margin:auto;
+		//width: 100px;
+	}
+
+/*-------index page---------*/
+	.head_content
+	{
+		margin-top: 88px;
+		z-index: 50;
+		width: 100%;
+		background-color: #f1f1f1;
+		text-align: center;
+	}
+
 	.image_slider
 	{
-		position: relative;;
-		top: 60px;
-		left:0;
-		z-index: 50;
-		background-color: #f1f1f1;
+		width: 80%;
+		display: inline-block;
 	}
 
 	.slider
 	{
+		margin: 0;
+		padding: 0;
 		text-align: center;
-		background: green;
 		background-color: #f1f1f1;
 	}
 
@@ -431,30 +406,255 @@ html, body
 		background-color: #f1f1f1;
 	}
 
-/*-------index page---------*/
-.viewed_deal_div
-{
-	width: 100%;
-	padding: 10px;
-	background: white;
-	text-align: center;
-	//background-color: #f1f1f1;
-}
+	.catog_pc_div
+	{
+		display: inline-block;
+		vertical-align: top;
+		padding-left: 10px;
+		background: white;
+		width: 18%;
+		text-align: left;
+		box-shadow: 0px 0px 1px grey;
+	}
 
-.viewed_deal_div .content_div
-{
-	margin: 5px;
-	transform: scale(.9,.9);
-	box-shadow: 0px 0px 1px grey;
-}
+	.catog_pc
+	{
+		padding-left:10px;
+	}
 
-.viewed_deal_div h3
-{
-	text-align: left;
-}
+	.catog_menu_a
+	{
+		padding:0;
+		margin:0;
+		color: grey;
+		background: none;
+		border:none;
+		transition: .2s;
+		font-size: 110%;
+	}
+
+	.catog_menu_a:hover
+	{
+		color: orange;
+	}
+
+	.below_nn, .greater_fifty_per, .trending_deals
+	{
+		text-align: center;
+	}
+
+	.viewed_deal_div
+	{
+		width: 100%;
+		background: #e2e2e2;
+		text-align: center;
+		padding: 2px;
+	}
+
+	.viewed_deal_div .content_div
+	{
+		margin: 3px;
+		box-shadow: 0px 0px 1px grey;
+		width: 180px;
+		padding: 10px;
+	}
+
+	.viewed_deal_div h4
+	{
+		margin: 0;
+		text-align: left;
+		padding: 10px;
+		background: white;
+		width: 100%;
+		border: lightgrey 1px solid;
+	}
+
+	.content_deal_h4
+	{
+		margin: 0;
+		text-align: left;
+		padding: 10px;
+		background: white;
+		width: 100%;
+		border: lightgrey 1px solid;
+	}
 
 
-/*-----------content-page------*/
+/*-----content coupon div---*/
+	.content_coupon_page
+	{
+		text-align: center;
+		//position: relative;
+	}
+
+	.content_coupon_div
+	{
+		width: 45%;
+		margin: 10px;
+		height: auto;
+		background-color: white;
+		box-shadow: 0px 0px 3px grey;
+		padding: 5px;
+		text-align: left;
+		display: inline-block;
+	}
+
+	.content_coupon_image
+	{
+		width: 20%;
+		display: inline-block;
+		vertical-align: middle;
+		text-align: center;
+	}
+
+	.content_coupon_image img
+	{
+		width: 45%;
+		padding: 10%;
+		//background: red;
+	}
+
+	.content_coupon_info
+	{
+		width: 65%;
+		padding: 3px;
+		//background-color: green;
+		display: inline-block;
+		vertical-align: top;
+		text-align: left;
+	}
+
+	.content_coupon_info h3
+	{
+		padding: 0;
+		margin: 0;
+		font-size: 140%;
+	}
+
+	.content_coupon_info h4
+	{
+		padding: 2px;
+		margin: 0;
+		color: grey;
+		font-size: 100%;
+	}
+
+	.content_coupon_info span
+	{
+		color: green;
+		//background: red;
+	}
+
+	.coupon_code_button
+	{
+		width: 120px;
+		height: 35px;
+		border: none;
+		float: right;
+		background-color: #F62459;
+		color: white;
+		border-radius: 3px;
+	}
+
+	.coupon_loading_div
+	{
+		width: 70%;
+		height: 400px;
+		background: white;
+		margin:auto;
+		position: fixed;
+		top:0;
+		bottom: 0;
+		right:0;
+		left:0;
+		display: none;
+		z-index: 1400;
+		border-radius: 5px;
+		box-shadow: 0px 0px 5px grey;
+		text-align: left;
+		overflow: scroll;
+	}
+
+	.div_coupon_loader
+	{
+		padding: 20px;
+		text-align: left;
+	}
+
+	.div_coupon_loader h3
+	{
+		padding: 0;
+		margin: 5px;
+	}
+
+	.close_loader_coupon
+	{
+		float:right;
+		margin: 2px;
+		background: black;
+		color: white;
+		border: none;
+		border-radius: 2px;
+	}
+
+	.coupon_loader_bckgrnd
+	{
+		width:100%;
+		height:100%;
+		background: black;
+		z-index:110;
+		position: fixed;
+		top:0;
+		left:0;
+		opacity: .5;
+
+		display: none;
+	}
+
+	.coupon_desc_image
+	{
+		width:30%;
+		//background: grey;
+		display: inline-block;
+		vertical-align: top;
+		text-align: center;
+	}
+
+	.coupon_desc_image img
+	{
+		width: 50%;
+	}
+
+	.coupon_desc_get_code
+	{
+		width: 65%;
+		//background: silver;
+		padding: 3px;
+		vertical-align: top;
+		display: inline-block;
+	}
+
+	.content_coupon_code
+	{
+		background: #F47983;
+		padding: 10px;
+		color: white;
+		border-radius: 3px;
+		font-size: 140%;
+	}
+
+	.coupon_desc_get_code span
+	{
+		color:green;
+	}
+
+	.coupon_desc_desc
+	{
+		padding: 3px;
+		color: grey;
+	}
+
+/*-----------content deal page------*/
 	.content_page
 	{
 		text-align: center;
@@ -477,6 +677,12 @@ html, body
 	.content_info
 	{
 		height: 180px;
+	}
+
+	.content_info_button
+	{
+		background: none;
+		border:none;
 	}
 
 	.content_image
@@ -517,9 +723,15 @@ html, body
 
 	#content_price
 	{
-		color: red;
+		color: black;
 		font-size: 120%;
-		text-align: 
+		font-weight: bold;
+	}
+
+	#time_spent
+	{
+		color:red;
+		font-size: 95%;
 	}
 
 	#content_org_price
@@ -548,13 +760,24 @@ html, body
 		display: none;
 	}
 
+	.choosed_deal_catog
+	{
+		//display: none;
+	}
+
+	.choosed_deal
+	{
+		text-align: center;
+		width: 100%;
+	}
+
 /*------description viewer page--------*/
 	.desc_viewer_div
 	{
 		width: 90%;
 		background: white;
 		margin: auto;
-		margin-top: 50px;
+		margin-top: 90px;
 		padding: 2%;
 		text-align: center;
 	}
@@ -587,7 +810,7 @@ html, body
 	{
 		text-align: left;
 		font-size: 200%;
-		//font-weight: bold;
+		font-weight: bold;
 		color: black;
 	}
 
@@ -632,9 +855,6 @@ html, body
 
 	.sugg_from_provider_div
 	{
-		//width: 90%;
-		background: white;
-		padding: 1%;
 		text-align: center;
 	}
 
@@ -643,19 +863,257 @@ html, body
 		text-align: left;
 	}
 
+/*--------footer-----*/
+	.footer_div
+	{
+		//position: absolute;
+		width: 100%;
+		overflow: hidden;
+	}
 
+	.email_subs
+	{
+		text-align: center;
+		background: #282828;
+		width: 100%;
+		padding: 10px;
+		margin: 0;
+	}
 
+	.email_subs img
+	{
+		width: 5%;
+		padding:0;
+		margin:0;
+	}
 
-/*--------media queries----------*/
+	.email_subs input
+	{
+		width: 280px;
+		height: 35px;
+		border-radius: 3px;
+		padding: 4px;
+		border: none;
+		margin: 5px;
+	}
+
+	.email_subs button
+	{
+		height: 35px;
+		border-radius: 3px;
+		border: none;
+		width: 100px;
+		margin: 5px;
+	}
+
+	.email_subs_text
+	{
+		color: white;
+	}
+
+	.email_subs_feed
+	{
+		font-size: 90%;
+	}
+
+	.footer
+	{
+		background: #282828;
+		width: 100%;
+		color: white;
+		//border-top:1px solid #404040;
+		padding:10px;
+	}
+
+	.site_map
+	{
+		padding: 10px;
+		text-align: center;
+		//background: red;
+	}
+
+	.site_map img
+	{
+		width:40%;
+		margin: 10px;
+	}
+
+	.site_map_ul
+	{
+		padding:0;
+		margin: 0;
+		//background: yellow;
+	}
+
+	.site_map_ul li
+	{
+		text-decoration: none;
+		color:white;
+		display: inline-block;
+		margin-left: 5px;
+		margin-right: 5px;
+	}
+
+	.site_map_ul a
+	{
+		color: silver;
+	}
+
+	.site_map_ul a:hover
+	{
+		color: white;
+		text-decoration: none;
+	}
+
+	.add
+	{
+		padding: 10px;
+		font-size: 90%;
+	}
+
+	.add h4
+	{
+		padding: 0;
+		margin: 0;
+	}
+
+	.add span
+	{
+		margin-left: 20px;
+		color: silver;
+	}
+
+	.add img
+	{
+		padding: 3px;
+		width:10%;
+	}
+
+	.add a
+	{
+		margin-left: 20px;
+		color: silver;
+	}
+
+	.add a:hover
+	{
+		color: white;
+		text-decoration: none;
+	}
+
+	.social
+	{
+		//background: yellow;
+		padding: 10px;
+		font-size: 90%;
+	}
+
+	.social h4
+	{
+		padding: 0;
+		margin: 0;
+	}
+
+	.social a
+	{
+		margin-left: 20px;
+		color: silver;
+	}
+
+	.social a:hover
+	{
+		color: white;
+		text-decoration: none;
+	}
+
+	.social img
+	{
+		padding: 3px;
+		width:10%;
+	}
+
+	.final_footer
+	{
+		background: #1f1f1f;
+		width: 100%;
+		color: white;
+		border-top:1px solid #404040;
+		padding: 8px;
+		font-size: 85%;
+		text-align: center;
+	}
+
+	.final_footer a 
+	{
+		color: grey;
+	}
+
+	.final_footer a:hover
+	{
+		text-decoration: none;
+		color: grey;
+	}
+
+/*--------media queries for less than 800px----------*/
 
 	@media screen and (max-width: 800px)
 	{
-	/*-----header-bar---*/
-		.header_bar
+	/*---for index page--*/
+		.catog_pc_div
 		{
-			height: 50px;
+			display: none;
+			
 		}
 
+		.image_slider
+		{
+			width: 100%;
+			display: inline-block;
+		}
+
+	/*-----header bar and search bar---*/
+		.search_bar_div
+		{
+			display: none;
+		}
+
+		.search_bar_div_mob
+		{
+			display: block;
+			position: fixed;
+			top: 50px;
+			left:0;
+			width:100%;
+			height: 40px;
+			background: white;
+			z-index: 100;
+			text-align: center;
+			padding: 5px;
+			//box-shadow: 0px 0px 5px grey;
+			border-bottom: 1px grey solid;
+		}
+
+		.search_input_mob
+		{
+			width: 75%;
+			height: 30px;
+			vertical-align: middle;
+			border-radius: 3px;
+			border: none;
+			border: 2px solid grey;
+		}
+
+		.search_button_mob
+		{
+			width: 20%;
+			height: 30px;
+			vertical-align: middle;
+			background: grey;
+			border: none;
+			color: white;
+			border-radius: 4px;
+		}
+		
 		.header_logo_bar
 		{
 			margin-left: 0%;
@@ -669,28 +1127,41 @@ html, body
 			cursor: pointer;
 		}
 
+	/*----header bar mini----*/
+		.header_mini_bar
+		{
+			background-color: white;
+			box-shadow: 0px 0px 0px grey;
+			z-index: 50;
+			color: white;
+		}
+
 		.pc_menu
 		{
 			position: fixed;
 			display: block;
-			top: 50px;
-			left:-150px;
+			top: 90px;
+			left:-225px;
 			height:100%;
 			background: white;
-			padding-left: 5%;
-			padding-right: 5%;
-			//font-size: 80%;
+			padding-left: 20px;
+			padding-right: 40px;
 			overflow: scroll;
+			box-shadow: 0px 0px 3px grey;
 		}
 
 		.pc_menu li
 		{
 			vertical-align: middle;
 			display: block;
-			//background: orange;
 			margin:0;
 			margin-top: 5%;
-			font-size: 80%;
+			font-size: 105%;
+		}
+
+		.pc_menu li a
+		{
+			color: black;
 		}
 
 		.catog_menu
@@ -700,29 +1171,29 @@ html, body
 			left: 0px;
 			background: white;
 			padding-left: 20%;
-			box-shadow: 0px 0px 0px grey;
-			//border: 1px solid grey;
 			display: block;
-			font-size: 90%;
 		}
 
-		.search_icon
-		{	
-			right: 50px;
-			width: 40px;
+		.catog_menu_a
+		{
+			padding:0;
+			margin:0;
+			color: grey;
+			background: none;
+			border:none;
 		}
-
-
-	/*-----content  div---*/
-		.content_page
+	
+	/*-----------content deal and coupon page------*/
+		.content_deal_page
 		{
 			text-align: center;
 		}
 
 		.content_div
 		{
-			width: 190px;
-			margin: 10px;
+			width: 150px;
+			padding: 4px;
+			margin: 3px;
 		}
 
 		.content_info
@@ -740,6 +1211,44 @@ html, body
 			text-align: left;
 			font-size: 85%;
 		}
+
+		.email_subs img
+		{
+			width: 20%;
+		}
+
+		.content_coupon_div
+		{
+			width: 90%;
+			//height: 120px;
+			background-color: white;
+			box-shadow: 0px 0px 3px grey;
+			padding: 5px;
+			margin: auto;
+			margin-bottom: 20px;
+			text-align: left;
+		}
+
+		.content_coupon_image img
+		{
+			width: 80%;
+			padding: 10%;
+			//background: red;
+			vertical-align: bottom;
+		}
+
+		.coupon_loading_div
+		{
+			width: 85%;
+		}
+
+		.viewed_deal_div .content_div
+		{
+			margin: 3px;
+			width: 150px;
+			//max-height: 80%;
+		}
+
 
 	/*-------div loader---*/
 		.login_submit, .register_submit
@@ -774,4 +1283,12 @@ html, body
 			font-size: 90%;
 		}
 
+	}
+
+
+/*--------media queries for less than 600px----------*/
+
+	@media screen and (max-width: 620px)
+	{
+		
 	}

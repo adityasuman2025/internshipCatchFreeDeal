@@ -3,10 +3,10 @@
 
 	include('connect_db.php');
 
-	$name_reg = htmlentities(mysql_real_escape_string(strtolower($_POST['name_reg'])));
-	$mob_reg = htmlentities(mysql_real_escape_string($_POST['mob_reg']));
-	$email_reg =  htmlentities(mysql_real_escape_string(strtolower($_POST['email_reg'])));
-	$pass_reg =  htmlentities(mysql_real_escape_string(md5($_POST['pass_reg'])));
+	$name_reg = strtolower(htmlentities(mysqli_real_escape_string($connect_link,$_POST['name_reg'])));
+	$mob_reg = htmlentities(mysqli_real_escape_string($connect_link,$_POST['mob_reg']));
+	$email_reg = strtolower(htmlentities(mysqli_real_escape_string($connect_link,$_POST['email_reg'])));
+	$pass_reg =  htmlentities(mysqli_real_escape_string($connect_link, md5($_POST['pass_reg'])));
 	
 	$registration_query = "INSERT INTO users VALUES('','$name_reg','$email_reg','$mob_reg','$pass_reg','0','0','0','0','0')";
 
