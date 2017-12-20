@@ -1,6 +1,5 @@
 <?php
 	//page for viewing description of the deal
-	// A MNgo Creation by: Aditya Suman (http://www.mngo.in/aditya.php)
 	include('php/connect_db.php');
 
 	//including header bar
@@ -8,6 +7,7 @@
 
 ?>
 <html>
+<!--- A MNgo Creation by: Aditya Suman (http://www.mngo.in/aditya.php)-->
 <head>
 	<style type="text/css">
 		body,html
@@ -15,15 +15,11 @@
 			background-color: #f1f1f1;
 		}
 	</style>
-	
-	<!------meta--tags-->
-	<meta name="viewport" content ="width= device-width, initial-scale= 1">
-	
 </head>
 <body>
 
 	<?php
-		$content_deal_id = $_POST['content_deal_id'];
+		$content_deal_id = $_GET['content_deal_id'];
 		
 		if(isset($content_deal_id))
 		{
@@ -51,6 +47,9 @@
 			$desc_content_price = $desc_viewer_query_data['price'];
 			$desc_content_deal = $desc_viewer_query_data['deal'];
 
+			$desc_content_note = $desc_viewer_query_data['note'];
+			$desc_content_likes = $desc_viewer_query_data['likes'];
+			
 			$desc_content_time = $desc_viewer_query_data['time'];
 			$desc_content_click = $desc_viewer_query_data['click'];
 
@@ -67,25 +66,26 @@
 
 			if($time_in_mins>=60)
 			{
-				$time_in_hrs = round($time_in_mins/60) . " hrs ";
-				$time_in_mins = $time_in_mins % 60 . " mins ";
+				$time_in_hrs = round($time_in_mins/60) . " hrs";
+				$time_in_mins = "";
 
 				if($time_in_hrs >= 24)
 				{
-					$time_in_days = round($time_in_hrs/24) . " days ";
-					$time_in_hrs =  $time_in_hrs % 24 . " hrs ";
-					$time_in_mins = $time_in_mins % 60 . " mins ";
+					$time_in_days = round($time_in_hrs/24) . " days";
+					$time_in_hrs =  "";
+					$time_in_mins = "";
 
 					if($time_in_days>=30)
 					{
-						$time_in_mnths =  round($time_in_days/30) . " months ";
-						$time_in_days = $time_in_days % 30 . " days ";
-						$time_in_hrs =  $time_in_hrs % 24 . " hrs ";
-						$time_in_mins = $time_in_mins % 60 . " mins ";
+						$time_in_mnths =  round($time_in_days/30) . " months";
+						$time_in_days = "";
+						$time_in_hrs =  "";
+						$time_in_mins = "";
 
 					}
 				}
 			}
+
 		//for getting time passed since post
 
 
@@ -101,7 +101,7 @@
 		else
 		{
 			$logged_user_id = $_COOKIE['logged_user_cookie'];
-			$content_deal_id = @$_POST['content_deal_id'];
+			$content_deal_id = @$_GET['content_deal_id'];
 			
 		//getting_prev_viewed_id_of_user
 			$getting_prev_viewed_id_of_user_query = "SELECT * FROM users WHERE id = '$logged_user_id'";
@@ -135,32 +135,75 @@
 		}
 	?>
 
+<div class="page_content">
 <!-------description of the selected deal------>
 	<div class="desc_viewer_div">
-		<div class="desc_name">
-			<?php
-				 echo @$desc_content_name;
-			?>
-		</div>
-		<div class="row">
-
+	<div class="row">
 			<div class="col-xs-12 col-md-6 desc_info">
-				<img alt="" class="desc_image" src="img/deal/<?php
+				<img class="desc_image" src="img/deal/<?php
 				 echo @$desc_content_image;
-				?>"/>
+				?>" onerror="this.onerror=null;this.src='img/logo.jpg';"/>
 				<br>
+
+				<div class="desc_likes">
+					<div class="desc_time_spent">
+						<?php
+							echo @$time_in_mnths . @$time_in_days . @$time_in_hrs . @$time_in_mins; 
+						?>
+						 ago
+					</div>
+
+					<div class="like_click">
+						<?php 
+							$cookie_name_incr = "like_incr_" . $content_deal_id;
+							$cookie_name_decr = "like_decr_" . $content_deal_id;
+
+							if(isset($_COOKIE[$cookie_name_incr]))
+							{
+								echo "<img src=\"img/like_png.png\">";
+								echo "<div class=\"like_text\">l</div>";
+							}
+							else
+							{
+								echo "<img src=\"img/like1.png\">";
+								echo "<div class=\"like_text\">u</div>";
+							}
+						?>
+						<span>
+							<?php
+								echo $desc_content_likes;
+							?>
+						</span>
+					</div>
+				</div>
+
+			</div>
+
+			<div class="col-xs-12 col-md-6 desc_desc">
+				<div class="desc_name">
+					<?php
+						 echo @$desc_content_name;
+					?>
+				</div>
 
 				<div class="desc_provider">
 					<?php
 						echo @$desc_content_provider;
 					?>
 				</div>
-				<span id="time_spent">
+
+
+				<?php
+				 echo @$desc_content_desc;
+				?>
+
+				<div class="desc_note">
 					<?php
-						echo $time_in_mnths . $time_in_days . $time_in_hrs . $time_in_mins; 
+						echo $desc_content_note;
 					?>
-					 ago
-				</span>
+				</div>
+				<br>
+
 				<div class="desc_price">
 					&#8377 <?php
 						echo @$desc_content_price;
@@ -176,24 +219,16 @@
 				<div class="desc_off">
 					 <?php
 						echo @$desc_content_off;
-					?>% OFF
+					?>
 				</div>
-
-				
 				<br>
 
 				<div class="desc_deal">
-					<a target="_blank" href="http://<?php
+					<a target="_blank" href="<?php
 						echo @$desc_content_deal;
 					?>">Buy Now</a>
 				</div>
 
-			</div>
-
-			<div class="col-xs-12 col-md-6 desc_desc">
-				<?php
-				 echo @$desc_content_desc;
-				?>
 			</div>
 		</div>
 	</div>
@@ -208,38 +243,95 @@
 			?>
 		</h4>
 
+		<span class="desc_id">
+			<?php
+				echo $content_deal_id;
+			?>	
+		</span>
+
 		<div class="sugg_from_provider">
 		</div>
 	</div>
 
 
-
 <!----footer------>
+	<br><br>
 	<?php
 		include('php/footer.php');
 	?>
+</div>
 
-	
-<!------script for geeting suggestion of the same provider---->
-	<script type="text/javascript">
+<script type="text/javascript">
+/*----script for getting suggestion of the same provider----*/
+	var desc_provider = $.trim($('.desc_provider').text());
+	var desc_id = $.trim($('.desc_id').text());
 
-		var desc_provider = $.trim($('.desc_provider').text());
+	query_to_send = "SELECT * FROM content_deal WHERE provider = '" + desc_provider + "' AND id != "+ desc_id + " ORDER BY click LIMIT 10";
 
-		query_to_send = "SELECT * FROM content_deal WHERE provider = '" + desc_provider + "'";
+	$.post('php/deal_viewer.php', {query_to_send: query_to_send}, function(e)
+	{
+		$('.sugg_from_provider').html(e);
 
-		$.post('php/deal_viewer.php', {query_to_send: query_to_send}, function(e)
+	/*----if there is no deal from same provider----*/
+		suggested_deals_no = $('.sugg_from_provider .content_div').length;
+		if(suggested_deals_no ==0)
 		{
-			$('.sugg_from_provider').html(e);
-		});
+			$('.content_deal_h4').fadeOut(0);
+		}
+		else
+		{
+			$('.content_deal_h4').fadeIn(0);
+		}
+	});
+	
+/*-------on clicking heart -----*/
+	$('.like_click img').click(function()
+	{
+		desc_likes = parseInt($.trim($('.like_click span').text()));
+		desc_id = $.trim($('.desc_id').text());
+
+		like_click_img_attr = $('.like_click img').attr('src');
+		like_text = $.trim($('.like_text').text());
+		//alert(like_text);
 		
-	</script>
+		if(like_text == 'u')
+		{	
+			var new_desc_likes = desc_likes +1;
+			like_incr_query = "UPDATE content_deal SET likes = " + new_desc_likes + " WHERE id = "+ desc_id;
+			
+			$.post('php/like_incr.php', {desc_likes: desc_likes, desc_id: desc_id, like_incr_query: like_incr_query}, function(e)
+			{
+				$('.like_click span').text(e);
+
+				like_text = $('.like_text').text('l');
+				$('.like_click img').attr('src', 'img/like_png.png');
+			});
+		}
+		else if(like_text == 'l')
+		{
+			var new_desc_likes = desc_likes - 1;
+			like_decr_query = "UPDATE content_deal SET likes = " + new_desc_likes + " WHERE id = "+ desc_id;
+			
+			$.post('php/like_decr.php', {desc_likes: desc_likes, desc_id: desc_id, like_decr_query: like_decr_query}, function(e)
+			{
+				$('.like_click span').text(e);
+
+				like_text = $('.like_text').text('u');
+				$('.like_click img').attr('src', 'img/like1.png');
+			});
+		}
+
+	});
+
+</script>
 
 </body>
 
 <head>
-	<title>	<?php
-				 echo @$desc_content_name;
-			?> | Catchfreedeal
+	<title>	
+		<?php
+			 echo @$desc_content_name;
+		?> | Catchfreedeal
 	</title>
 	
 </head>

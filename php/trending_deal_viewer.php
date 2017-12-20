@@ -3,19 +3,16 @@
 		include('connect_db.php');
 		
 	//if directyly visiting the page
-		if(isset($_POST['query_to_send']))
-		{
 
-		}
-		else
-		{
-			die('not allowed');
-		}
-
-		$query_to_send = $_POST['query_to_send'];
-		$viewer_query_run = mysqli_query($connect_link, $query_to_send);
+		$current_timestamps = time();
+		$time_subs = 86400;
+		$wanted_timestamps =  time() - $time_subs;
+		$wanted_time = gmdate("Y-m-d H:i:s", $wanted_timestamps);
+		
+		$query_to_get_time = "SELECT * FROM content_deal WHERE `time` >= '$wanted_time' ORDER BY click DESC LIMIT 10";
+		$query_to_get_time_run = mysqli_query($connect_link, $query_to_get_time);
 	
-		while($content_query_data = mysqli_fetch_assoc($viewer_query_run))
+		while($content_query_data = mysqli_fetch_assoc($query_to_get_time_run))
 		{
 			$content_id = $content_query_data['id'];
 			
@@ -63,7 +60,7 @@
 					}
 				}
 			}
-
+		//for getting time passed since post
 
 			echo "<div class=\"content_div\">
 					<form action=\"desc_viewer.php\" method=\"get\">

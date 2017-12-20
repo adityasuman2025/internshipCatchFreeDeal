@@ -13,7 +13,7 @@
 			die('not allowed');
 		}
 
-	$email = htmlentities(mysql_real_escape_string(strtolower($_POST['email'])));
+	$email = strtolower(htmlentities(mysqli_real_escape_string($connect_link,$_POST['email'])));
 
 	$email_varification_query = "SELECT id FROM users WHERE email = '$email'";
 

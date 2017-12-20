@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<!--- A MNgo Creation by: Aditya Suman (http://www.mngo.in/aditya.php)-->
+
+<url>
+  <loc>http://www.catchfreedeal.com/</loc>
+  <lastmod>2017-12-13T11:45:43+00:00</lastmod>
+  <priority>1.00</priority>
+</url>
+<url>
+  <loc>http://www.catchfreedeal.com/index.php</loc>
+  <lastmod>2017-12-13T11:45:43+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://www.catchfreedeal.com/deal.php</loc>
+  <lastmod>2017-12-13T11:45:43+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://www.catchfreedeal.com/coupon.php</loc>
+  <lastmod>2017-12-13T11:45:43+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://www.catchfreedeal.com/about.php</loc>
+  <lastmod>2017-12-13T11:45:43+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://www.catchfreedeal.com/career.php</loc>
+  <lastmod>2017-12-13T11:45:43+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://www.catchfreedeal.com/advertise.php</loc>
+  <lastmod>2017-12-13T11:45:43+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://www.catchfreedeal.com/privacy.php</loc>
+  <lastmod>2017-12-13T11:45:43+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://www.catchfreedeal.com/terms.php</loc>
+  <lastmod>2017-12-13T11:45:43+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+</urlset>

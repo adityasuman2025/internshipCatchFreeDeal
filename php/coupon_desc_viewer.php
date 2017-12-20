@@ -24,23 +24,55 @@
 	$coupon_desc_code = $coupon_desc_data['code'];
 	$coupon_desc_expiry = $coupon_desc_data['expiry'];
 	$coupon_desc_provider = $coupon_desc_data['provider'];
+	$coupon_desc_link = $coupon_desc_data['link'];
 
-	echo " <h3>$coupon_desc_name</h3>
-			<div class=\"coupon_desc_image\">
-			 	<img src=\"img/coupon/$coupon_desc_image\">
+	echo "  <div class=\"coupon_desc_image\">
+			 	<img src=\"img/coupon/$coupon_desc_image\" onerror=\"this.onerror=null;this.src='img/logo.jpg';\">
 			</div>
 
 			<div class=\"coupon_desc_get_code\">
-				<p class=\"content_coupon_code\">$coupon_desc_code</p>
-				<h5 style=\"color: grey\">$coupon_desc_provider</h5>
-				
-				<span>Expiry: $coupon_desc_expiry</span>
-				
-			</div>
+				<h3>$coupon_desc_name</h3>
+				<h5>$coupon_desc_provider</h5>";
 
-			<div class=\"coupon_desc_desc\">
-				$coupon_desc_desc
-			</div>
-			";
+				if($coupon_desc_code != '')
+				{
+					echo " 	<br><div class=\"content_coupon_code\">
+								<span id=\"p1\">$coupon_desc_code</span>
+								<button id=\"copy_code\" onclick=\"copyToClipboard('#p1')\">Copy Code</button>
+							</div>";
+				}
+				
+				if($coupon_desc_link != '')
+				{
+					echo "  <a target=\"_blank\" href=\"$coupon_desc_link\" class=\"coupon_desc_link\">Visit Site</a>
+							<br>";
+				}
+
+				
+		echo "  <span>$coupon_desc_expiry</span>
+				
+				<div class=\"coupon_desc_desc\">
+					$coupon_desc_desc
+				</div>
+			</div>";
 
 ?>
+
+<body>
+	<!-----for copying coupon code in clipboard-------->
+	<script type="text/javascript">
+		function copyToClipboard(element) {
+		  var $temp = $("<input>");
+		  $("body").append($temp);
+		  $temp.val($(element).text()).select();
+		  document.execCommand("copy");
+		  $temp.remove();
+		}
+
+		$('#copy_code').click(function()
+		{
+			$(this).text('Copied');
+		})
+
+	</script>
+</body>
