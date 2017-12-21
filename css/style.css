@@ -32,6 +32,61 @@ html, body
 	border: lightgrey 1px solid;
 }
 
+/*----pop up box--------*/
+	.pop_back
+	{
+		width:100%;
+		height:100%;
+		background: black;
+		z-index:130;
+		position: fixed;
+		top:0;
+		left:0;
+		opacity: .5;
+
+		display: none;
+	}
+
+	.pop_div
+	{
+		z-index:130;
+		position: fixed;
+		top:0;
+		left:0;
+		right:0;
+		bottom: 0;
+		margin: auto;
+		width:60%;
+		height: 170px;
+		background: white;
+
+		display: none;
+	}
+
+	.close_pop
+	{
+		text-align:right;
+		background: #333333;
+		width:100%;
+		height:40px;
+		padding:3px;
+	}
+
+	.close_pop button
+	{
+		font-size: 120%;
+		background: black;
+		color: white;
+		border:none;
+	}
+
+	.pop_div_content
+	{
+		padding: 10px;
+		text-align: center;
+		font-size: 120%;
+		color: red;
+	}
 
 /*------header bar------*/
 	.header_bar
@@ -229,7 +284,7 @@ html, body
 	{
 		margin: 0;
 		padding: 0;
-		padding-left: 170px;
+		padding-left: 144px;
 		vertical-align: middle;
 		height: 100%;
 		//background: blue;
@@ -289,7 +344,7 @@ html, body
 		position: fixed;
 		top: 83px;
 		right: 0;
-		z-index: 1500;
+		z-index: 115;
 		width: 20%;
 		height: auto;
 		background: white;
@@ -426,6 +481,37 @@ html, body
 		width: 80px;
 	}
 
+/*------image slider------*/
+	.head_content
+	{
+		z-index: 50;
+		width: 100%;
+		background-color: #f1f1f1;
+		text-align: center;
+	}
+
+	.image_slider
+	{
+		width: 80%;
+		display: inline-block;
+		height: 250px;
+		overflow: hidden;
+	}
+
+	.slider
+	{
+		margin: 0;
+		padding: 0;
+		text-align: center;
+		background-color: #f1f1f1;
+	}
+
+	.slider img
+	{
+		width: 100%;
+		background-color: #f1f1f1;
+	}
+
 /*---forgot password controls---*/
 	.forgot_pass
 	{
@@ -457,36 +543,6 @@ html, body
 	}
 
 /*-------index page---------*/
-	.head_content
-	{
-		z-index: 50;
-		width: 100%;
-		background-color: #f1f1f1;
-		text-align: center;
-	}
-
-	.image_slider
-	{
-		width: 80%;
-		display: inline-block;
-		height: 250px;
-		overflow: hidden;
-	}
-
-	.slider
-	{
-		margin: 0;
-		padding: 0;
-		text-align: center;
-		background-color: #f1f1f1;
-	}
-
-	.slider img
-	{
-		width: 100%;
-		background-color: #f1f1f1;
-	}
-
 	.catog_pc_div
 	{
 		display: inline-block;

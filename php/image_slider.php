@@ -5,14 +5,16 @@
 	<ul class="slider">
 		<?php
 			include('php/connect_db.php');
-			$slider_query = "SELECT image FROM image_slider ORDER BY id";
+			$slider_query = "SELECT * FROM image_slider ORDER BY id";
 
 			if($slider_query_run = mysqli_query($connect_link , $slider_query))
 			{
 				while($slider_query_assoc = mysqli_fetch_assoc($slider_query_run))
 				{
 					$slider_query_result = $slider_query_assoc['image'];
-					echo "<li><img src=\"img/image_slider/$slider_query_result\"/></li>";
+					$slider_query_link= $slider_query_assoc['link'];
+
+					echo "<li><a target=\"_blank\" href=\"$slider_query_link\"><img src=\"img/image_slider/$slider_query_result\"/></a></li>";
 				}
 				//echo 'ok';
 			}

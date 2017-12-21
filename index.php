@@ -7,7 +7,7 @@
 <html>
 <!--- A MNgo Creation by: Aditya Suman (http://www.mngo.in/aditya.php)-->
 <head>
-	<title>Catchfreedeal</title>
+	<title>Online Shopping India |Top Deals, Coupons, Service | Freebies </title>
 	<style type="text/css">
 		body,html
 		{

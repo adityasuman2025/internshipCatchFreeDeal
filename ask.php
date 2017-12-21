@@ -23,7 +23,16 @@
 		<?php
 			if(!isset($_COOKIE['logged_user_cookie']))
 			{
-				echo "For asking for a deal you need to login first.";
+				echo "	<script type=\"text/javascript\">
+
+							$('.div_loader').fadeIn(500);
+							$('.loader_bckgrnd').fadeIn(500);
+
+							$('.pop_back').fadeIn(500);
+							$('.pop_div').fadeIn(500);
+							$('.pop_div_content').text('For asking for a deal you need to login first');
+
+						</script>";
 			}
 			else
 			{
@@ -33,11 +42,11 @@
 
 	</div>
 	
-	<!----footer------>
-		<br><br>
-		<?php
-			include('php/footer.php');
-		?>
+<!----footer------>
+	<br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+	<?php
+		include('php/footer.php');
+	?>
 </div>
 
 </body>

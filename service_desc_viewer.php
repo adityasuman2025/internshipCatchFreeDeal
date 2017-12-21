@@ -17,7 +17,6 @@
 	</style>
 </head>
 <body>
-
 	<?php
 		$content_service_id = $_GET['content_service_id'];
 		
@@ -192,9 +191,10 @@
 				</div>
 				<br>
 			
-				click here to get your benefits
-				<br><br>
 				<div class="desc_service_code_button">
+					click here to get your benefits
+					<br><br>
+					
 					<a>Catch Service</a>
 				</div>
 				<br>
@@ -362,9 +362,14 @@
 				}
 				else
 				{
-					$('.desc_service_code_feed').text(n);
 					$('.div_loader').fadeIn(500);
 					$('.loader_bckgrnd').fadeIn(500);
+
+				//loading pop up for informing to log in first
+					$('.pop_back').fadeIn(500);
+					$('.pop_div').fadeIn(500);
+					$('.pop_div_content').text(n);
+					
 				}
 			});
 		});

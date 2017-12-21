@@ -19,9 +19,7 @@
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="css/jquery.bxslider.css">
-	
-	<!-- <script src="https://catchfreedeal.pushify.com/script.js?category=5a2e7a4920e1a78f7d74c6e2"></script>
- -->
+
 	<script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
 	<script>
 	  var OneSignal = window.OneSignal || [];
@@ -49,6 +47,7 @@
 </head>
 
 <body>
+
 <!----------header-----bar-------->
 	<div class="header_bar">
 		<a href="index.php"><img class="header_logo_img" src="img/logo.jpg"></a>		
@@ -226,8 +225,29 @@
 		<div id="reg_feed"></div>
 	</div>
 
+<!---------pop up---------->
+	<div class="pop_back"></div>
+	<div class="pop_div">
+		<div class="close_pop">
+			<button>X</button>
+		</div>
+		<div class="pop_div_content">sf</div>
+	</div>
+
 <!------scripts---->
 <script type="text/javascript">
+/*---script for pop up box-------*/
+	$('.close_pop button').click(function()
+	{
+		$('.pop_back').fadeOut(500);
+		$('.pop_div').fadeOut(500);
+	});
+
+	$('.pop_back').click(function()
+	{
+		$('.pop_back').fadeOut(500);
+		$('.pop_div').fadeOut(500);
+	});
 
 /*-----mob menu toogle-------*/
 	$('.menu_img').click(function()

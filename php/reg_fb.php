@@ -32,7 +32,7 @@
     $email_login = $email_reg;
     $pass_login = $pass_reg;
 
-    $user_login_query = "SELECT id FROM users WHERE email = '$email_login' AND password = '$pass_login'";
+    $user_login_query = "SELECT id FROM users WHERE email = '$email_login'";
     $user_login_query_run = mysqli_query($connect_link, $user_login_query);
     
     $user_login_num_rows = mysqli_num_rows($user_login_query_run);
