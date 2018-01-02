@@ -71,7 +71,7 @@
 		if(isset($_GET['service_catog']))
 		{
 			echo "<h4 class=\"choosed_catog_h4\">Services > <span class=\"choosed_service_catog\">" . $_GET['service_catog'] . "</span> at <button class=\"choosed_service_location\">" . @$_SESSION["set_location_cookie"] . "</button></h4>";
-			echo "<div class=\"choosed_deal\"></div>";
+			echo "<div class=\"choosed_deal\"><br></div>";
 			$_SESSION['service_catog'] = $_GET['service_catog'];
 		}
 		else
@@ -135,7 +135,7 @@
 	var service_catog = $.trim($('.choosed_service_catog').text());
 	service_location = $.trim($('.service_location_div').text());
 
-	query_to_send = "SELECT * FROM content_service WHERE location = '" + service_location + "' AND tag = '" + service_catog + "'";
+	query_to_send = "SELECT * FROM content_service WHERE location = '" + service_location + "' AND tag = '" + service_catog + "' ORDER BY id DESC LIMIT 30";
 	
 	$.post('php/service_viewer.php', {query_to_send : query_to_send}, function(e)
 	{
@@ -145,7 +145,7 @@
 		suggested_service_no = $('.choosed_deal .content_service_div').length;
 		if(suggested_service_no ==0)
 		{
-			$('.choosed_deal').html('<br>sorry no services found').css('color', 'red');
+			$('.choosed_deal').html('<br>sorry no services found.').css('color', 'red');
 		}
 		
 	});
@@ -160,10 +160,10 @@
 		
 	});
 
-/*----for generatng load more for content deal----*/
+/*----for generatng load more for content service----*/
 	start =0;
-	limit = 50;
-	org_limit = 50;
+	limit = 35;
+	org_limit = 35;
 
 	content_query = "SELECT * FROM content_service WHERE location ='" + service_location +"' ORDER BY id DESC LIMIT " + start + ", " + limit;
 

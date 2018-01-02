@@ -15,7 +15,7 @@
 
 	<div class="career_div">
 			
-		CatchFreeDeal is one of the top online shopping deals and coupon  portals in India.  CatchFreeDeal is the 1st of its kind digital bargainer that bargains for you every time you shop online.
+		CatchFreeDeal is one of the top online shopping deals and coupon  portals in India. CatchFreeDeal is the 1st of its kind digital bargainer that bargains for you every time you shop online.
 		We provide Exclusive Deals from online retailers. 
 
 	</div>

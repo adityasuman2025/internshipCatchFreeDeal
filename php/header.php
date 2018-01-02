@@ -15,6 +15,20 @@
 	gtag('config', 'UA-111428335-1');
 	</script>
 
+<!------ad sense---------->
+	<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+	<script>
+
+	  (adsbygoogle = window.adsbygoogle || []).push({
+
+	    google_ad_client: "ca-pub-7073027541477667",
+
+	    enable_page_level_ads: true
+
+	  });
+	</script>
+
+
 	<!--- A MNgo Creation by: Aditya Suman (http://www.mngo.in/aditya.php)-->
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
@@ -54,7 +68,7 @@
 		<div class="header_logo_bar">
 			<img class="menu_img" src="img/menu_mob.png"/>
 			<a href="index.php"><img class="header_logo_mob" src="img/logo_mob.jpg"></a>
-				<div class="pc_menu">
+			<div class="pc_menu">
 				<ul>
 					<li><a href="deal.php">Deals</a></li>
 					<!----sub menu of deals category------>
@@ -120,7 +134,14 @@
 						</form>
 
 					<li><a href="ask.php">Ask For Deal</a></li>
-				
+
+					<form action="index.php" method="get" class="deals_tab_mob">
+						<div class="add_tab_mob">
+							<button name="deals_tab" value="loot" class="loot_button">Loot Deals</button>
+							<button name="deals_tab" value="cashback" class="cashback_button">Cashback Deals</button>
+						</div>
+					</form>
+
 				<!-----search--bar for pc---->
 					<div class="search_bar_div">
 						<form action = "search.php" method="get">
@@ -154,6 +175,10 @@
 			<button name="deals_tab" value="trend" class="trending_button">Trending Deals</button>
 			<button name="deals_tab" value="below_nn" class="below_nn_button">Under &#8377 99</button>
 			<button name="deals_tab" value="greater_fifty" class="greater_fifty_button">50% Or More OFF</button>
+			<div class="add_tab">
+				<button name="deals_tab" value="loot" class="loot_button">Loot Deals</button>
+				<button name="deals_tab" value="cashback" class="cashback_button">Cashback Deals</button>
+			</div>
 		</form>
 	</div>
 

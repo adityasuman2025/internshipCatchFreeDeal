@@ -157,7 +157,43 @@
 		var query_to_send = "SELECT * FROM content_deal WHERE off >= 50 ORDER BY id DESC LIMIT 30";
 		$.post('php/deal_viewer.php', {query_to_send: query_to_send}, function(e)
 		{
-			$('.deal_tab_h4').text('50% Off');
+			$('.deal_tab_h4').text('50% Or More OFF');
+			$('.deals_div').html(e);
+
+			deals_div_no = $('.deals_div .content_div').length;
+			if(deals_div_no ==0)
+			{
+				$('.deals_div').html("sorry no such deals found at the moment <br><br>").css('color', 'red');
+			}
+		});
+
+		$('.content_deal_page').fadeOut(0);
+		$('.load_more_deal').fadeOut(0);
+	}
+	else if(selected_tab == "cashback")
+	{
+		var query_to_send = "SELECT * FROM content_deal WHERE note LIKE '%cashback%' ORDER BY id DESC LIMIT 30";
+		$.post('php/deal_viewer.php', {query_to_send: query_to_send}, function(e)
+		{
+			$('.deal_tab_h4').text('Cashback Deals');
+			$('.deals_div').html(e);
+
+			deals_div_no = $('.deals_div .content_div').length;
+			if(deals_div_no ==0)
+			{
+				$('.deals_div').html("sorry no such deals found at the moment <br><br>").css('color', 'red');
+			}
+		});
+
+		$('.content_deal_page').fadeOut(0);
+		$('.load_more_deal').fadeOut(0);
+	}
+	else if(selected_tab == "loot")
+	{
+		var query_to_send = "SELECT * FROM content_deal WHERE note LIKE '%loot%' ORDER BY id DESC LIMIT 30";
+		$.post('php/deal_viewer.php', {query_to_send: query_to_send}, function(e)
+		{
+			$('.deal_tab_h4').text('Loot Deals');
 			$('.deals_div').html(e);
 
 			deals_div_no = $('.deals_div .content_div').length;
@@ -171,6 +207,7 @@
 		$('.load_more_deal').fadeOut(0);
 	}
 
+
 /*----for getting total no of content div----*/
 	content_query_div_no = "SELECT * FROM content_deal";
 	$.post('php/content_deal.php', {content_query: content_query_div_no}, function(e)
@@ -181,8 +218,8 @@
 
 /*----for generatng load more for content deal----*/
 	start =0;
-	limit = 50;
-	org_limit = 50;
+	limit = 35;
+	org_limit = 35;
 
 	content_query = "SELECT * FROM content_deal ORDER BY id DESC LIMIT " + start + ", " + limit;
 	$.post('php/content_deal.php', {content_query: content_query}, function(e)

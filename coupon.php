@@ -77,7 +77,7 @@
 <script type="text/javascript">
 /*----for showing result according to selected category--*/
 	var choosed_deal_catog = $.trim($('.choosed_coupon_catog').text());
-	var query_to_send = "SELECT * FROM content_coupon WHERE tag LIKE '%" + choosed_deal_catog + "%' LIMIT 30";
+	var query_to_send = "SELECT * FROM content_coupon WHERE tag LIKE '%" + choosed_deal_catog + "%' ORDER BY id DESC LIMIT 30";
 
 	$.post('php/coupon_viewer.php', {query_to_send : query_to_send}, function(e)
 	{
@@ -102,8 +102,8 @@
 
 /*----for generatng load more for content deal----*/
 	start =0;
-	limit = 50;
-	org_limit = 50;
+	limit = 35;
+	org_limit = 35;
 
 	content_query = "SELECT * FROM content_coupon ORDER BY id DESC LIMIT " + start + ", " + limit;
 	$.post('php/content_coupon.php', {content_query: content_query}, function(e)

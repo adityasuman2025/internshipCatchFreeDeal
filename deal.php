@@ -77,7 +77,7 @@
 <script type="text/javascript">
 /*----for showing result according to selected category--*/
 	var choosed_deal_catog = $.trim($('.choosed_deal_catog').text());
-	var query_to_send = "SELECT * FROM content_deal WHERE tag LIKE '%" + choosed_deal_catog + "%' LIMIT 30";
+	var query_to_send = "SELECT * FROM content_deal WHERE tag LIKE '%" + choosed_deal_catog + "%'ORDER BY id DESC LIMIT 30";
 
 	$.post('php/deal_viewer.php', {query_to_send : query_to_send}, function(e)
 	{
@@ -87,7 +87,7 @@
 		suggested_deal_no = $('.content_div').length;
 		if(suggested_deal_no ==0)
 		{
-			$('.choosed_deal').html('<br>sorry no deals found').css('color', 'red');
+			$('.choosed_deal').html('<br>sorry no deals found.').css('color', 'red');
 		}
 		
 	});
@@ -103,8 +103,8 @@
 
 /*----for generatng load more for content deal----*/
 	start =0;
-	limit = 50;
-	org_limit = 50;
+	limit = 35;
+	org_limit = 35;
 
 	content_query = "SELECT * FROM content_deal ORDER BY id DESC LIMIT " + start + ", " + limit;
 	$.post('php/content_deal.php', {content_query: content_query}, function(e)

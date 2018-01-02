@@ -249,7 +249,6 @@ html, body
 	.search_deal_div, .search_coupon_div, .search_service_div
 	{
 		width: 100%;
-		padding:10px;
 		text-align: center;
 	}
 
@@ -307,6 +306,43 @@ html, body
 	.deals_tab button:hover
 	{
 		color: lightgrey;
+	}
+
+	.deals_tab_mob
+	{
+		margin: 0;
+		padding: 0;
+		//background: blue;
+		display: none;
+		width: 100%;
+	}
+
+	.deals_tab_mob button
+	{
+		vertical-align: middle;
+		display: block;
+		padding: 0;
+		margin:0;
+		margin-top: 5%;
+		font-size: 105%;
+		background: none;
+		border:none;
+		color: black;
+	}
+
+	.deals_tab_mob button:hover
+	{
+		color: red;
+	}
+
+	.add_tab_mob
+	{
+		
+	}
+
+	.add_tab
+	{
+		display: inline-block;
 	}
 
 	.deals_div
@@ -857,7 +893,7 @@ html, body
 		font-size: 115%;
 		font-weight: bold;
 
-		display: none;
+		//display: none;
 	}
 
 	.content_deal_page
@@ -1672,7 +1708,6 @@ html, body
 
 	@media screen and (max-width: 1000px)
 	{
-
 		.page_content
 		{
 			margin-top: 118px;
@@ -1781,6 +1816,16 @@ html, body
 			padding: 0;
 			padding-left: 2px;
 			padding-right: 2px;
+		}
+
+		.deals_tab_mob
+		{
+			display: block;
+		}
+
+		.add_tab
+		{
+			display: none;
 		}
 
 	/*-----menu bar for phones----*/

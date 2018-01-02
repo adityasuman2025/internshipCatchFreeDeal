@@ -60,7 +60,7 @@
 
 			echo "<div class=\"content_div\">
 					<form action=\"desc_viewer.php\" method=\"get\">
-						<button name=\"content_deal_id\" value=\"$content_id\" class=\"content_info_button\">
+						<button name=\"content_deal_id\" value=\"$content_id\" class=\"content_info_button\" >
 							<div class=\"content_image\">
 								<img src=\"img/deal/$content_image \" onerror=\"this.onerror=null;this.src='img/logo.jpg';\"/>
 							</div>
@@ -110,7 +110,9 @@
 							Catch Deal
 						</a>
 					</div>
-				  </div>";
+				  </div>
+
+				 ";
 
 		}
 	?>

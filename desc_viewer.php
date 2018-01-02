@@ -267,7 +267,7 @@
 	var desc_provider = $.trim($('.desc_provider').text());
 	var desc_id = $.trim($('.desc_id').text());
 
-	query_to_send = "SELECT * FROM content_deal WHERE provider = '" + desc_provider + "' AND id != "+ desc_id + " ORDER BY click LIMIT 10";
+	query_to_send = "SELECT * FROM content_deal WHERE provider = '" + desc_provider + "' AND id != "+ desc_id + " ORDER BY id DESC LIMIT 10";
 
 	$.post('php/deal_viewer.php', {query_to_send: query_to_send}, function(e)
 	{
