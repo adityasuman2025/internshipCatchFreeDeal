@@ -26,7 +26,7 @@
 					<li><a href="about.php">About Us</a></li>
 					<li><a href="deal.php">Deals</a></li>
 					<li><a href="coupon.php">Coupons</a></li>
-					<li><a href="nearby.php">Near-By Service</a></li>
+					<li><a href="service.php">Near-By Service</a></li>
 				</ul>
 
 				<ul>
